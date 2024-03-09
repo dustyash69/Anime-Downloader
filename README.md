@@ -38,3 +38,5 @@ For now, V2 works ONLY for windows and you will have to remove lines 17-46,236,2
 Known Limitations - You can't download anime from webpages like these - https://animeflix.lol/download-dragon-ball-super-2015-dual-audio-english-japanese-hevc-720p/
 
 AND, That's it! With this, you shall be able to download many anime, have fun!
+
+Plus, I look forward to working with contributors. Feel free to report bugs, unexpected behaviour, etc.
