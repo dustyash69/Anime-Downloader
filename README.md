@@ -12,4 +12,6 @@ INTRO:
 Theres are two apps, namely - AnimeDownloaderV1 and AnimeDownloaderV2. Let's call them V1 and V2 for short.
 V1 works with the help of dl.animesp.xyz and is useful for batch downloading an anime.
 V2 works with the help of animeflix.lol and is useful for downloading anything from an anime you want - whether it be the complete anime or a partiular season or episode.
-For more, see GETTING STARTED.
+
+GETTING STARTED:
+
