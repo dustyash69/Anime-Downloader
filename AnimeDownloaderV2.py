@@ -52,6 +52,8 @@ def Download():
     elif dropdown2.get() != "All seasons (i.e., The Complete Anime)":
         if dropdown3.get() == "All episodes (i.e., The Complete Season)":
             DownloadSeason(dropdown2.current(), True)
+        elif dropdown3.get() == "Select Episode:":
+            DownloadRange()
         else:
             DownloadEpisode(dropdown3.current(), True)
     else:
@@ -87,6 +89,19 @@ def DownloadSeason(season_index, close):
                     DownloadEpisode(i, False)
             else:
                 DownloadEpisode(i, False)
+
+def DownloadRange():
+    first_value = int(range_entry.get().split("-")[0]) - 1 # Assuming that the user inputs first episode as 1 and not 0
+    lower_limit = int(range_entry.get().split("-")[1]) - first_value - 1
+    upper_limit = int(range_entry.get().split("-")[2]) - first_value
+    
+    i = lower_limit
+    while i < upper_limit:
+        if i == upper_limit-1:
+            DownloadEpisode(i, True)
+        else:
+            DownloadEpisode(i, False)
+        i+=1
 
 def DownloadEpisode(episode_index, close):
     
@@ -188,14 +203,15 @@ def on_season_select(event):
         episode_list.append(episode.text.strip())
     episode_list.append("All episodes (i.e., The Complete Season)")
     dropdown3['values'] = episode_list
-    Debug.config(text="Select required episode from the dropdown", fg="white")
-
-def on_episode_select(event):
-
+    Debug.config(text="Select required episode from the dropdown\nOR Enter first episode number and range of episodes seperated by -\nExample: 1-6-9 or 13-17-24 Here, both episodes are included", fg="white")
+    
     all_links = driver.find_elements(By.XPATH, "//a[@href]")
     links = [link for link in all_links if "https://episodes.animeflix" in link.get_attribute("href")]
     for link in links:
         episode_links.append(link.get_attribute("href"))
+
+def on_episode_select(event):
+
     Debug.config(text="Choose Download Folder", fg="white")
 
 def close_ads(Driver):
@@ -241,6 +257,12 @@ def on_name_click(event):
         name_entry.delete(0, tk.END)
         name_entry.config(fg='orange')
 
+def on_range_click(event):
+
+    if range_entry.get() == "Range of episodes (Check episodes dropdown)":
+        range_entry.delete(0, tk.END)
+        range_entry.config(fg='black')
+
 # Create the main window
 app = tk.Tk()
 app.title("Anime Downloader")
@@ -250,7 +272,7 @@ app.configure(bg='black')
 title_label = tk.Label(app, text="Anime Downloader", font=("Helvetica", 16), fg = "gold", bg = "black")
 title_label.pack(pady=10)
 
-# Input fields
+# Input field
 name_entry = tk.Entry(app, width=30, fg='orange', font=('Helvetica', 12))
 name_entry.insert(0, "Name of Anime")
 name_entry.bind('<FocusIn>', on_name_click)
@@ -278,6 +300,12 @@ dropdown3.set("Select Episode:")
 dropdown3.bind("<Key>", lambda e: "break")
 dropdown3.bind("<<ComboboxSelected>>", on_episode_select)
 dropdown3.pack(pady=5)
+
+# Input field
+range_entry = tk.Entry(app, width=39, fg='black', font=('Helvetica', 10))
+range_entry.insert(0, "Range of episodes (Check episodes dropdown)")
+range_entry.bind('<FocusIn>', on_range_click)
+range_entry.pack(pady=5)
 
 # Buttons
 button2 = tk.Button(app, text="Choose Location", fg = "blue", command=ChooseLocation)
