@@ -270,9 +270,6 @@ def on_range_click(event):
 app = tk.Tk()
 app.title("Anime Downloader")
 app.configure(bg='black')
-if os.path.exists(r"F:\Harshvardhan\Temp\Icon.png"): # DELETE this when uploading code to Github
-    icon_image = tk.PhotoImage(file=r"F:\Harshvardhan\Temp\Icon.png")
-    app.iconphoto(True, icon_image)
 
 # Title
 title_label = tk.Label(app, text="Anime Downloader", font=("Helvetica", 16), fg = "gold", bg = "black")
