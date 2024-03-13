@@ -212,7 +212,7 @@ def on_season_select(event):
 
 def on_episode_select(event):
 
-    Debug.config(text="Choose Download Folder", fg="white")
+    Debug.config(text="Choose Download Folder if you want to move files else click Download", fg="white")
 
 def close_ads(Driver):
     
@@ -249,7 +249,10 @@ def keep_tab_open(close):
     Debug.config(text="Download Completed", fg="green")
     if close == True:
         driver.quit()
-        Move()
+        if dropdown4.get=="Yes":
+            Move()
+        else:
+            Debug.config(text="Enjoy!", fg="green")
 
 def on_name_click(event):
 
@@ -267,6 +270,9 @@ def on_range_click(event):
 app = tk.Tk()
 app.title("Anime Downloader")
 app.configure(bg='black')
+if os.path.exists(r"F:\Harshvardhan\Temp\Icon.png"): # DELETE this when uploading code to Github
+    icon_image = tk.PhotoImage(file=r"F:\Harshvardhan\Temp\Icon.png")
+    app.iconphoto(True, icon_image)
 
 # Title
 title_label = tk.Label(app, text="Anime Downloader", font=("Helvetica", 16), fg = "gold", bg = "black")
@@ -306,6 +312,12 @@ range_entry = tk.Entry(app, width=39, fg='black', font=('Helvetica', 10))
 range_entry.insert(0, "Range of episodes (Check episodes dropdown)")
 range_entry.bind('<FocusIn>', on_range_click)
 range_entry.pack(pady=5)
+
+#Dropdown
+dropdown4 = ttk.Combobox(app, width=45, values=["Yes","No"])
+dropdown4.set("Move files after downloading? (ONLY for windows)")
+dropdown4.bind("<Key>", lambda e: "break")
+dropdown4.pack(pady=5)
 
 # Buttons
 button2 = tk.Button(app, text="Choose Location", fg = "blue", command=ChooseLocation)
