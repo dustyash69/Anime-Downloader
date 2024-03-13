@@ -34,7 +34,7 @@ GETTING STARTED with V2:
 V2 is relatively simpler to use. Just follow the instructions on the screen and for whatever reasons do NOT click on the browser that V2 opens -  Because you will face an ad if you click it yourself.
 If you do manage to click, close the new tab. I kept the browser settings like that, beacuse I wanted you guys to be able to see the results.
 It should make downloading anime easier with that kind of visualization.
-If you are NOT using Windows, Then when downloading from V2 don't bother to select a folder and in the "Move checkbox", uncheck it. This will prevent any errors.
+If you are NOT using Windows, Then when downloading from V2 don't bother to select a folder and in the Move Dropbox, set the value as "No". This will prevent any errors.
 Known Limitations - You can't download anime from webpages like these - https://animeflix.lol/download-dragon-ball-super-2015-dual-audio-english-japanese-hevc-720p/
 
 AND, That's it! With this, you shall be able to download many anime, have fun!
