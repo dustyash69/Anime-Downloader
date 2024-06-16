@@ -140,7 +140,7 @@ def Search():
     if len(name) > 0:
     
         Debug.config(text="Searching for anime...", fg="white")
-        search_URL = "https://animeflix.lol/?s=" + name.replace(" ", "+")
+        search_URL = "https://animeflix.pm/?s=" + name.replace(" ", "+")
         
         driver = webdriver.Edge() # Or whatever browser you have
         driver.get(search_URL)
